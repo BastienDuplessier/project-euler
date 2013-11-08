@@ -16,3 +16,6 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+project_euler.sublime-project
+project_euler.sublime-workspace
