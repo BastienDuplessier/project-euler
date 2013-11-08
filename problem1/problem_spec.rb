@@ -1,4 +1,6 @@
-require 'problem_1'
+$LOAD_PATH << '.'
+require 'problem1/problem'
+
 
 describe "Problem 1" do
   context "Numbers under 10" do
