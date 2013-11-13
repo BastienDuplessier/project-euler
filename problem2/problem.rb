@@ -15,10 +15,27 @@ class Fibonacci
       result
     end
 
-    private
-
     def hash
       @hash ||= Hash.new{ |h,k| h[k] = k < 2 ? k : h[k-1] + h[k-2] }
     end
+
+    private :hash
   end
+end
+
+class Problem2
+
+  class << self
+    alias :under :new
+  end
+
+  def initialize(max)
+    @max = max
+  end
+
+  def list
+    Fibonacci.take_under(@max).select(&:even?)
+  end
+
+  private :list
 end
