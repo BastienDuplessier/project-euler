@@ -12,11 +12,11 @@ class Problem1
     list.sum
   end
 
-  private
-
   def list
     (1...@max).map { |number| number if number.divisable_by_any?(3,5) }.compact
   end
+  private :list
+
 end
 
 class Integer
