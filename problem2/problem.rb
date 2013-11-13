@@ -33,9 +33,20 @@ class Problem2
     @max = max
   end
 
+  def solve
+    list.sum
+  end
+
   def list
     Fibonacci.take_under(@max).select(&:even?)
   end
 
   private :list
+end
+
+
+class Array
+  def sum
+    inject(0) {|acc,n| acc += n }
+  end
 end
