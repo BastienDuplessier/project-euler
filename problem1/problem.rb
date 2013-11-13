@@ -1,7 +1,7 @@
 class Problem1
 
-  def self.under(number)
-    self.new(number)
+  class << self
+    alias :under :new
   end
 
   def initialize(max)
@@ -15,22 +15,18 @@ class Problem1
   private
 
   def list
-    list = []
-    (1...@max).each { |number| list << number if (number.divisable?(3,5)) }
-    list
+    (1...@max).map { |number| number if number.divisable_by_any?(3,5) }.compact
   end
 end
 
 class Integer
-  def divisable?(*numbers)
+  def divisable_by_any?(*numbers)
     numbers.any? { |number| (self % number) == 0  }
   end
 end
 
 class Array
   def sum
-    result = 0
-    each { |value| result += value }
-    result
+    inject(0) {|acc,n| acc += n }
   end
 end
