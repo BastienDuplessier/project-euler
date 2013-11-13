@@ -17,7 +17,7 @@ end
 describe "Problem 2" do
   context "under 10" do
     it "should list even fibonacci numbers under 10" do
-      Problem2.send(:list).should eq([2, 8])
+      Problem2.under(10).send(:list).should eq([2, 8])
     end
 
     it "shoule sum even fibonacci numbers under 10" do
