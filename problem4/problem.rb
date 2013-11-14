@@ -17,13 +17,13 @@ class Problem4
   end
 
   def initialize(digits)
-    @digits = digits
+    @max_fact = (10**@digits) - 1
   end
 
   def solve
     solution = []
-    solution << max_fact.downto(1).find do |first_fact|
-      solution << max_fact.downto(1).find do |second_fact|
+    solution << @max_fact.downto(1).find do |first_fact|
+      solution << @max_fact.downto(1).find do |second_fact|
         (first_fact * second_fact).to_s.palindrome?
       end
     end
@@ -31,7 +31,4 @@ class Problem4
     return (solution[0] * solution[1])
   end
 
-  def max_fact
-    (10**@digits) - 1
-  end
 end
