@@ -10,6 +10,15 @@ class String
 
 end
 
+class Array
+
+  def first_product
+    self[0] * self[1]
+  end
+
+end
+
+
 class Problem4
 
   class << self
@@ -17,18 +26,13 @@ class Problem4
   end
 
   def initialize(digits)
-    @max_fact = (10**@digits) - 1
+    @max_fact = (10**digits) - 1
   end
 
   def solve
-    solution = []
-    solution << @max_fact.downto(1).find do |first_fact|
-      solution << @max_fact.downto(1).find do |second_fact|
-        (first_fact * second_fact).to_s.palindrome?
-      end
-    end
+    collection = (@max_fact.downto 1).to_a.product((@max_fact.downto 1).to_a).uniq{ |e| e.sort }.sort{ |a,b| (b[0] + b[1]) <=> (a[0] + a[1]) }
 
-    return (solution[0] * solution[1])
+    collection.find { |numbers| numbers.first_product.to_s.palindrome? }.first_product
   end
 
 end
