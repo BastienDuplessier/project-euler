@@ -9,3 +9,29 @@ class String
   end
 
 end
+
+class Problem4
+
+  class << self
+    alias :with :new
+  end
+
+  def initialize(digits)
+    @digits = digits
+  end
+
+  def solve
+    solution = []
+    solution << max_fact.downto(1).find do |first_fact|
+      solution << max_fact.downto(1).find do |second_fact|
+        (first_fact * second_fact).to_s.palindrome?
+      end
+    end
+
+    return (solution[0] * solution[1])
+  end
+
+  def max_fact
+    (10**@digits) - 1
+  end
+end
